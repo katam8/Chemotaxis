@@ -1,4 +1,5 @@
 //declare bacteria variables here   
+int xPos, yPos; //xD, yD; 
 Bacteria[] George;
 
 void setup() {     
@@ -18,21 +19,29 @@ void draw() {
     George[i].move();
   }
 } 
- 
+
 class Bacteria {     
  	//lots of java! 
-  int xPos, yPos; 
+  int xPos, yPos, xD, yD; 
   Bacteria() {
-    xPos = mouseX;
-    yPos = mouseY;
+    xPos = width/2;
+    yPos = height/2;
   }
   
   void move() {
-    xD +=
-  }
+    xPos += (int)(Math.random() * 7) - 3;
+    yPos += (int)(Math.random() * 7) - 3;
+    if(mousePressed) {
+    xD += (int)(Math.random() * 7) - 3;
+    yD += (int)(Math.random() *7) - 3;
+    xPos = mouseX + xD;
+    yPos = mouseY + yD;
+    } else {
+      
+}
   
   void display(){
-    fill(255, 255, 255, 127);
-    ellipse(mouseX, mouseY, 50, 50);
+    fill((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255), 127);
+    ellipse(xPos, yPos, 25, 25);
   }     
 }
